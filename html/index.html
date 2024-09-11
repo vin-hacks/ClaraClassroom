@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Clara S. Traversal's Classroom</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<!--Class routes are located at /routes-->
+    <nav class="navbar">
+        <ul>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="welcome-box">
+            <h1>Welcome to Clara S. Traversal's Class</h1>
+            <p>Enhance your learning experience with the power of knowledge and security!</p>
+            <p>Ready to begin? Let's get started!</p>
+            <button class="enter-button" onclick="enterClass()">Enter the Classroom</button>
+            <button class="enter-button" onclick="requestAccess()">Request class access</button>
+        </div>
+    </div>
+
+    <script>
+        function enterClass() {
+        fetch('/checkAccessToClass', {
+        method: 'POST'
+    })
+        .then(response => response.json())
+        .then(data => {           
+            if (data.message == "REDIRECTION") {
+                location = "/class";
+            }
+            else {
+                alert(data.message);
+            }
+            
+        })
+        .catch((err) => {
+            console.error('Error:', err);
+        });
+        }
+
+
+        function requestAccess() {
+        fetch('/requestAccess', {
+        method: 'POST'
+    })
+        .then(response => response.json())
+        .then(data => {           
+            alert(data.message);        
+        })
+        .catch((err) => {
+            console.error('Error:', err);
+        });
+        }
+    </script>
+
+</body>
+</html>

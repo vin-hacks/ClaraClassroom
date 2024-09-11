@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom - Final Exam Grades</title>
+    <link rel="stylesheet" href="/css/class.css">
+</head>
+
+<body>
+
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/class">Students</a></li>
+            <li><a href="/waitlist">Waitlist</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <h1>Final exam grades.</h1>
+        <p class="subheading">Not really proud of Vincent...</p>
+
+
+        <div id="gradeList" class="student-list">
+
+        </div>
+
+
+        <h2>Simple Python Calculator</h2>
+        <p class="subheading">To do some math on those grades.</p>
+        <div class="calculator">
+            <input type="text" id="calcInput" placeholder="Enter calculation e.g. 1 + 1">
+            <button onclick="calculate()">Calculate</button>
+            <p id="calcResult"></p>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        // Fetch the list of grades from the server
+        function loadGrades() {
+            fetch('/finalGrades')
+                .then(response => response.json())
+                .then(data => {
+                    const studentList = document.getElementById('gradeList');
+                    studentList.innerHTML = ''; // Clear previous content
+                    for (let student in data) {
+                        let grade = data[student];
+                        const studentDiv = document.createElement('div');
+                        studentDiv.className = 'student';
+                        studentDiv.textContent = student + ":" + grade + "%";
+                        studentList.appendChild(studentDiv);
+                    };
+
+                })
+                .catch(error => console.error('Error fetching grades:', error));
+        }
+
+        // Load grades when the page loads
+        window.onload = loadGrades;
+
+        function calculate() {
+            const calcInput = document.getElementById('calcInput').value;
+            fetch('/calculateSup3rSecretP4th', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ expression: calcInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('calcResult').textContent = "Result: " + data.result;
+            })
+            .catch(error => console.error('Error calculating:', error));
+        }
+
+        // Check if you solve the challenge
+        if (document.cookie.includes("YayYouChangeVincentsgrade"))
+        {
+            alert("Yay you changed Vincent's grade!! You completed the challenge.")
+        }
+
+    </script>
+
+</body>
+
+</html>

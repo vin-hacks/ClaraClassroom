@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom - Student List</title>
+    <link rel="stylesheet" href="/css/class.css">
+</head>
+<body>
+
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/grades">Grades</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <h1>Welcome to Clara S. Traversal's Classroom</h1>
+        <p class="subheading">Here are the students currently in the class:</p>
+
+
+        <div id="studentList" class="student-list">
+
+        </div>
+    </div>
+
+    <script>
+        // Fetch the list of students from the server
+        function loadStudents() {
+            fetch('/students')
+                .then(response => response.json())
+                .then(data => {
+                    const studentList = document.getElementById('studentList');
+                    studentList.innerHTML = ''; // Clear previous content
+
+                    data.students.forEach(student => {
+                        const studentDiv = document.createElement('div');
+                        studentDiv.className = 'student';
+                        studentDiv.textContent = student;
+                        studentList.appendChild(studentDiv);
+                    });
+                })
+                .catch(error => console.error('Error fetching students:', error));
+        }
+
+        // Load students when the page loads
+        window.onload = loadStudents;
+    </script>
+
+</body>
+</html>

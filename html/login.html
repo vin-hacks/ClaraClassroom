@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">home</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="form-box">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="button" id="loginButton">Login</button>
+            </form>
+        </br>
+            <h2>Register</h2>
+                <div class="form-group">
+                    <label for="new_username">New Username:</label>
+                    <input type="text" id="new_username" name="new_username" required>
+                </div>
+                <div class="form-group">
+                    <label for="new_password">New Password:</label>
+                    <input type="password" id="new_password" name="new_password" required>
+                </div>
+                <button id="registerButton">Register</button>
+        </div>
+    </div>
+
+
+<script>
+document.getElementById('loginButton').addEventListener('click', function () {
+
+username = document.getElementById('username').value
+password = document.getElementById('password').value
+    
+    data = {
+        "username":username,
+        "password":password
+    };
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {           
+            if (data.message == "REDIRECTION") {
+                location = "/"
+            }
+            else {
+                alert(data.message)
+            }
+            
+        })
+        .catch((err) => {
+            console.error('Error:', err);
+        });
+
+
+
+});
+
+
+document.getElementById('registerButton').addEventListener('click', function () {
+
+    username = document.getElementById('new_username').value
+    password = document.getElementById('new_password').value
+        
+        data = {
+            "new_username":username,
+            "new_password":password
+        };
+        fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {             
+                alert(data.message)
+            })
+            .catch((err) => {
+                console.error('Error:', err);
+            });
+
+
+
+});
+
+</script>

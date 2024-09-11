@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0; /* Ensure no margin is applied to body */
+    padding: 0; /* Ensure no padding is applied to body */
+}
+
+.navbar {
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+    position: fixed; /* Fix the navbar to the top */
+    top: 0; /* Align it to the top */
+    left: 0; /* Ensure it's aligned to the left */
+    z-index: 1000; /* Make sure it stays above other content */
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    margin: 0;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #4CAF50;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 60px; /* Add margin-top to ensure content isn't hidden behind the fixed navbar */
+}
+
+.welcome-box {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.enter-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.enter-button:hover {
+    background-color: #45a049;
+}
+
+.enter-button:focus {
+    outline: none;
+}

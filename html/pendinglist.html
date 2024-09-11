@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom - Waiting List</title>
+    <link rel="stylesheet" href="/css/class.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/class">Students</a></li>
+            <li><a href="/grades">Grades</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <h1>Waiting List</h1>
+        <p class="subheading">Here are the students waiing to get in the class:</p>
+        <p class="subheading">The teacher will deny users she doesnt want in her class every minute...</p>
+
+        <div id="studentList" class="student-list">
+
+        </div>
+    </div>
+
+    <script>
+        // Fetch the list of students
+        function loadStudents() {
+            fetch('/pending')
+                .then(response => response.json())
+                .then(data => {
+                    const studentList = document.getElementById('studentList');
+                    studentList.innerHTML = ''; // Clear previous list
+
+                    data.students.forEach(student => {
+                        const studentDiv = document.createElement('div');
+                        studentDiv.className = 'student';
+                        studentDiv.textContent = student;
+                        // Create the accept link
+                        const acceptLink = document.createElement('a');
+                        acceptLink.href = `/accept/${student}?csrftok=${csrftok}`;
+                        acceptLink.textContent = 'Accept';
+
+                        // Create the deny link
+                        const denyLink = document.createElement('a');
+                        denyLink.href = `/deny/${student}?csrftok=${csrftok}`;
+                        denyLink.textContent = 'Deny';
+
+                        studentDiv.appendChild(document.createTextNode(' '));
+                        studentDiv.appendChild(acceptLink);
+                        studentDiv.appendChild(document.createTextNode(' ')); // Add space between links
+                        studentDiv.appendChild(denyLink);
+
+                        studentList.appendChild(studentDiv);
+                    });
+                })
+                .catch(error => console.error('Error fetching students:', error));
+        }
+
+        // Load students 
+        window.onload = loadStudents;
+    </script>
+
+</body>
+</html>

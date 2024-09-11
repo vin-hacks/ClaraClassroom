@@ -1,0 +1,20 @@
+HERE IS ALL THE ROUTES OF MY CLASS
+
+Unauth access:
+/
+/login
+
+Students only:
+/class
+
+Teacher only:
+/grades
+/waitlist
+/accept
+/deny
+
+
+CSS:
+/css/index.css
+/css/login.css
+/css/class.css
