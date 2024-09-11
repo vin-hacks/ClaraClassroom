@@ -214,7 +214,13 @@ Content-Type: text/html
         except Exception:
             return False
     else:
-        return False
+        response = f"""\
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<script>location = '/login';</script>
+"""
+        return response
 
 
 def return_grades_page(token):

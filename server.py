@@ -3,6 +3,7 @@ import json
 from responses import *
 import threading
 from urllib.parse import unquote, urlparse, parse_qs
+from users import isTeacher
 
 HOST = "127.0.0.1"
 #HOST = "192.168.2.57"
@@ -84,16 +85,21 @@ def handclient(connection, addr):
                     
                     response = addToWaitList(token)
                 case ("/calculateSup3rSecretP4th", "POST"):
-                    params = json.loads(body)
-                    expression = params.get('expression', 0)
-                    result = eval(expression)
-                    jsonRes =  json.dumps({"result": result})
-                    response = f"""\
+                    isT, usn = isTeacher(token)
+                    print(usn, "tries to acces the claculator!")
+                    if isT:
+                        params = json.loads(body)
+                        expression = params.get('expression', 0)
+                        result = eval(expression)
+                        jsonRes =  json.dumps({"result": result})
+                        response = f"""\
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {jsonRes}
 """
+                    else:
+                        response = False
 
                 # Retreive data
                 case ("/students", "GET"):
