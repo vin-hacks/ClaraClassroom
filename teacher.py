@@ -35,9 +35,12 @@ while True:
 
         #Simulating the traversal made by the browser:
         normalized_path = os.path.normpath(path)
-
-        url = f'http://localhost:8081/{normalized_path}'
-
+        try:
+            requests.post(url, params=params, headers=headers, cookies=cookies)
+            print(url)
+        except:
+            print("invalid path")
+        
         requests.post(url, params=params, headers=headers, cookies=cookies)
         print(url)
         time.sleep(2)
