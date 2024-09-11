@@ -9,7 +9,7 @@ The Clara S. Traversal's Classroom web security challenge is a challenge where y
 
 - Requirements : Python installed nothing else.
 
-- Additional info: The teacher denies access to users every minute.
+- Additional info: The teacher denies access to users every minute. Also I recommend not logging in to the teacher's account and logging out it will cause problems with the teacher.py script and is not needed for the challenge.
 
 Warning: This is an intentionally vulnerable website. This code contains an RCE so make sure the website is not publicly accessible.
 
