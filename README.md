@@ -31,4 +31,4 @@ Then you should be able to access http://localhost:8081/ in your browser and beg
 
 Note that this challenge was made so that no code review or enumeration is necessary.
 
-Hints will be put on here soon and 
+The solution will be released in probably a week in the repo.
