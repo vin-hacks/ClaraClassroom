@@ -7,7 +7,7 @@ The Clara S. Traversal's Classroom web security challenge is a challenge where y
 
 - Objective : Gain access to the class and find a way to change the user Vincent's final grade to be over 90%
 
-- Requirements : Python installed nothing else.
+- Requirements : Python (3.10 or higher versions) installed nothing else.
 
 - Additional info: The teacher denies access to users every minute. Also I recommend not logging in to the teacher's account and logging out it will cause problems with the teacher.py script and is not needed for the challenge.
 
