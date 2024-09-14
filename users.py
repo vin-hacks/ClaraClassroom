@@ -226,7 +226,7 @@ def addUserToWait(username):
 
 
 # aadd and remove user from the apropriate files so he is in the class
-def addUserToApprouved(username):
+def addUserToApproved(username):
     approuvedUsers = getAllowedUsers()
     waitingUsers = getWaitingUsers()
     if username in  waitingUsers:

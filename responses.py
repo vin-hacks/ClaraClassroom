@@ -105,7 +105,7 @@ def addUserToClass(userToAdd, token, csrfTok):
     isteach, username = isTeacher(token)
     valcsrftok = checkCsrfToken(token, csrfTok)
     if isteach and valcsrftok:
-        addUserToApprouved(userToAdd)
+        addUserToApproved(userToAdd)
         response = f"""\
 HTTP/1.1 200 OK
 Content-Type: text/html
@@ -118,7 +118,7 @@ Set-Cookie: token=; expires=Thu, 01 Jan 1970 00:00:00 GMT
 HTTP/1.1 401 YOU SHALL NOT PASS
 Content-Type: text
 
-As user : {username} you cant approuve or deny users only user : "teacher" does.
+As user : {username} you cant approve or deny users only user : "teacher" does.
 """
     return response
 
@@ -142,7 +142,7 @@ Set-Cookie: token=; expires=Thu, 01 Jan 1970 00:00:00 GMT
 HTTP/1.1 401 YOU SHALL NOT PASS
 Content-Type: text
 
-As user : {username} you cant approuve or deny users only user : "teacher" does.
+As user : {username} you cant approve or deny users only user : "teacher" does.
 """
         
 
