@@ -2,7 +2,7 @@
 
 By viewing the source code of / you find a path called /routes where you can see all paths. If you test each of them you find that /waitlist as an access control issue.
 
-On that page you can see how the links to accept or deny users are made. Since you know that the teacher denies user every minute you have to find a way to force her into accepting one of you user. Your username is direclty appended to the path without verification because of this you can exploit a Client Side Path Traversal by creating a user named foo/../../accept/attacker. So when the teacher clicks the link : http://localhost:8081/deny/foo/../../accept/attacker it results in http://localhost:8081/accept/attacker which gives the attacker access to the class.
+On that page you can see how the links to accept or deny users are made. Since you know that the teacher denies user every minute you have to find a way to force her into accepting one of your account. Your username is direclty appended to the path without verification because of this you can exploit a Client Side Path Traversal by creating a user named foo/../../accept/attacker. So when the teacher clicks the link : http://localhost:8081/deny/foo/../../accept/attacker it results in http://localhost:8081/accept/attacker which gives the attacker access to the class.
 
 The next bug wasn't really realistic but it was to test your attention to details. Once you gain access to the class you see the name of all users in the class which contains the user Teacher however when you try to access a page that only the teacher as access you get this error message : "
 As user : {username} you cant approve or deny users only user : "teacher" does."
