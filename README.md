@@ -1,7 +1,7 @@
 # Clara S. Traversal's Classroom
 **This is supposed to be a black box challenge no source code review is necessary.**
 
-**If you have any questions or want to get acces to hints you can join this server : https://discord.gg/G5sHRuWJ**
+**If you have any questions or want to get acces to hints you can add me on discord : vinhacks**
 
 The Clara S. Traversal's Classroom web security challenge is a challenge where you'll need to exploit a couple of web vulnerabilities in order to make Vincent's final grade over 90%.
 
